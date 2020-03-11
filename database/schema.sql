@@ -14,11 +14,11 @@ DROP TABLE IF EXISTS `Pictures`;
 		
 CREATE TABLE `Pictures` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `user` INTEGER NULL DEFAULT NULL,
+  `user_id` INTEGER NULL DEFAULT NULL,
   `img_url` VARCHAR NULL DEFAULT NULL,
   `description` VARCHAR NULL DEFAULT NULL,
   `date` DATE NULL DEFAULT NULL,
-  `restaurants` INTEGER NULL DEFAULT NULL,
+  `restaurant_id` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -36,6 +36,7 @@ CREATE TABLE `User` (
   `friend_count` INTEGER NULL DEFAULT NULL,
   `review_count` INTEGER NULL DEFAULT NULL,
   `helpful_count` INTEGER NULL DEFAULT NULL,
+  `elite_flag` BINARY NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -56,8 +57,8 @@ CREATE TABLE `Restaurant` (
 -- Foreign Keys 
 -- ---
 
-ALTER TABLE `Pictures` ADD FOREIGN KEY (user) REFERENCES `User` (`id`);
-ALTER TABLE `Pictures` ADD FOREIGN KEY (restaurants) REFERENCES `Restaurant` (`id`);
+ALTER TABLE `Pictures` ADD FOREIGN KEY (user_id) REFERENCES `User` (`id`);
+ALTER TABLE `Pictures` ADD FOREIGN KEY (restaurant_id) REFERENCES `Restaurant` (`id`);
 
 -- ---
 -- Table Properties
@@ -71,9 +72,9 @@ ALTER TABLE `Pictures` ADD FOREIGN KEY (restaurants) REFERENCES `Restaurant` (`i
 -- Test Data
 -- ---
 
--- INSERT INTO `Pictures` (`id`,`user`,`img_url`,`description`,`date`,`restaurants`) VALUES
+-- INSERT INTO `Pictures` (`id`,`user_id`,`img_url`,`description`,`date`,`restaurant_id`) VALUES
 -- ('','','','','','');
--- INSERT INTO `User` (`id`,`user_name`,`profile_img`,`friend_count`,`review_count`,`helpful_count`) VALUES
--- ('','','','','','');
+-- INSERT INTO `User` (`id`,`user_name`,`profile_img`,`friend_count`,`review_count`,`helpful_count`,`elite_flag`) VALUES
+-- ('','','','','','','');
 -- INSERT INTO `Restaurant` (`id`,`name`) VALUES
 -- ('','');
