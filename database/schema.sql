@@ -28,5 +28,10 @@ CREATE TABLE pictures (
     descript VARCHAR(100) NOT NULL,
     date date,
     restaurant_id int NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_user) 
+        REFERENCES users(id),
+    FOREIGN KEY (restaurant_id)
+        REFERENCES restaurants(id)
 );
+
