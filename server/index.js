@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 app.use(express.static(__dirname + '/../public'))
 
 
-app.get('/api/carousel', (req, res) => {
+app.get('/api/carousel/', (req, res) => {
     console.log('GET REQUEST recieved')
     var restaurant = 20;
     Db.getPictures(20, (err, results) => {
@@ -25,3 +25,13 @@ app.get('/api/carousel', (req, res) => {
 app.listen(3000, () => {
     console.log('Server listening on port 3000')
 })
+
+/* 
+data: 20
+
+'/api/carousel/:restaurantID'
+
+req.params.restaurantID
+
+
+*/
