@@ -11,6 +11,7 @@ var generate = (callback) => {
         temp += faker.name.firstName();
         var last = String.fromCharCode(65+Math.floor(Math.random() * 26));
         temp += (' ' + last  + '.');
+        names.push(temp);
     }
     
     var food = [
