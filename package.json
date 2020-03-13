@@ -9,10 +9,13 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-watch": "webpack -d --watch"
+    "react-watch": "webpack -d --watch",
+    "seedDB": "node ./fakeData.js",
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "mysql": "^2.18.1",
