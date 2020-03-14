@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -17,7 +18,7 @@ app.get('/api/carousel/:restaurantID', (req, res) => {
   console.log('GET REQUEST recieved for restaurant ID of: ', restaurant);
   Db.getPictures(restaurant, (err, results) => {
     if (err) {
-      console.log('err in server CB: ', err); 
+      console.log('err in server CB: ', err);
     } else {
       console.log('results in server CB: ', results);
     }
@@ -27,4 +28,3 @@ app.get('/api/carousel/:restaurantID', (req, res) => {
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
-
