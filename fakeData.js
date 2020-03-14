@@ -1,6 +1,5 @@
 const mysql = require('mysql');
 const faker = require('faker');
-const db = require('./database/index.js');
 const mysqlConfig = require('./database/config.js');
 
 const connection = mysql.createConnection(mysqlConfig);
@@ -8,8 +7,8 @@ const connection = mysql.createConnection(mysqlConfig);
 
 const generate = (callback) => {
   const names = [];
-  let temp;
   for (let i = 0; i <= 50; i += 1) {
+    let temp;
     temp = '';
     temp += faker.name.firstName();
     const last = String.fromCharCode(65 + Math.floor(Math.random() * 26));
@@ -95,17 +94,17 @@ const generate = (callback) => {
     'https://elclectictacoportraits.s3-us-west-1.amazonaws.com/women-s-white-and-black-button-up-collared-shirt-774909.jpg',
   ];
 
-  for (var i = 0; i <= 100; i += 1) {
-    restaurants.push(faker.company.companyName())
+  for (let i = 0; i <= 100; i += 1) {
+    restaurants.push(faker.company.companyName());
   }
 
-  callback(names, food, restaurants, foodImages, profileImg)
+  callback(names, food, restaurants, foodImages, profileImg);
 };
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min; 
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 const insertFakeData = () => {
@@ -118,7 +117,7 @@ const insertFakeData = () => {
       const restaurantQuery = `INSERT INTO restaurants(id, res_name) VALUES(${i}, '${temp}')`;
       connection.query(restaurantQuery);
     }
-    // insert 50 users 
+    // insert 50 users
     for (let x = 1; x <= 50; x += 1) {
       const randomIdx = Math.floor(Math.random() * userNames.length);
       const randomIdxImg = Math.floor(Math.random() * profileImages.length);
@@ -128,11 +127,11 @@ const insertFakeData = () => {
       const reviewCount = getRandomIntInclusive(0, 255);
       const helpfulCount = getRandomIntInclusive(0, 50);
       const eliteFlag = Math.floor(Math.random() * flag.length);
-      const userQuery = `INSERT INTO users(id, name_user, profile_img, friend_count, review_count, helpful_count, elite_flag) VALUES(${x}, '${tempName}', '${tempImg}', '${friendCount}', '${reviewCount}', '${helpfulCount}', '${eliteFlag}' )`
-      connection.query(userQuery)
+      const userQuery = `INSERT INTO users(id, name_user, profile_img, friend_count, review_count, helpful_count, elite_flag) VALUES(${x}, '${tempName}', '${tempImg}', '${friendCount}', '${reviewCount}', '${helpfulCount}', '${eliteFlag}' )`;
+      connection.query(userQuery);
     }
     // insert 50 pictures
-    for (let j = 1;  j < 300; j += 1) {
+    for (let j = 1; j < 300; j += 1) {
       const userId = getRandomIntInclusive(1, 50);
       const imgUrl = foodImages[getRandomIntInclusive(0, 33)];
       const foodDescript = foodDesc[Math.floor(Math.random() * foodDesc.length)];
