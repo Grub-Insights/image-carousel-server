@@ -20,7 +20,7 @@ app.get('/api/carousel/:restaurantID', (req, res) => {
     if (err) {
       console.log('err in server CB: ', err);
     } else {
-      console.log('results in server CB: ', results);
+      res.end(JSON.stringify(results));
     }
   });
 });
