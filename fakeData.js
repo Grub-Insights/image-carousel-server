@@ -131,7 +131,7 @@ const insertFakeData = () => {
       connection.query(userQuery);
     }
     // insert 50 pictures
-    for (let j = 1; j < 300; j += 1) {
+    for (let j = 1; j < 1000; j += 1) {
       const userId = getRandomIntInclusive(1, 50);
       const imgUrl = foodImages[getRandomIntInclusive(0, 33)];
       const foodDescript = foodDesc[Math.floor(Math.random() * foodDesc.length)];

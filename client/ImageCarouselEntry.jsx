@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-function ImageCarouselEntry(props) {
+const ImageCarouselEntry = ({picture}) => {
+  const styles = {
+    backgroundImage: `url(${picture})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  };
+
   return (
-    <div></div>
-  )
-}
+    <div classsName="imageCarouselEntry" style={styles}></div>
+  );
+};
 
-export default ImageCarouselEntry
+export default ImageCarouselEntry;

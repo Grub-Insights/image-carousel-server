@@ -3,13 +3,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ImageCarouselEntry from './ImageCarouselEntry.jsx'
+import ImageCarouselMain from './ImageCarouselMain.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      images: undefined,
+      images: [],
     };
   }
 
@@ -28,10 +30,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div> 
-        {/* {this.state.images.map((picture) => {
-          return <ImageCarouselEntry picture={picture} />;
-        })} */}test
+      <div className="carousel"> 
+        {this.state.images.map((picture) => {
+          return <ImageCarouselEntry picture={picture.img_url} />;
+        })}
       </div>
     );
   }
