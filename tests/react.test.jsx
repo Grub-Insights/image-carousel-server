@@ -1,20 +1,13 @@
 import React from 'react'
 import {mount, shallow} from 'enzyme'
+import ImageCarouselEntry from '../client/ImageCarouselEntry.jsx';
+import ImageCarouselMain from '../client/ImageCarouselMain.jsx';
 
-function Fixture() {
-  return (
-    <div>
-      <input id="checked" defaultChecked />
-      <input id="not" defaultChecked={false} />
-      <input id="tertiary" defaultChecked checked={false} />
-    </div>
-  );
-}
 
-describe('<Fixture />', () => {
-  it('assert checked', () => {
-    const wrapper = mount(<Fixture />); 
-    expect(wrapper.find('#checked')).toBeChecked();
-    expect(wrapper.find('#not')).not.toBeChecked();
+
+describe(ImageCarouselMain, () => {
+  it('Has Access to 10 images form resturant 20', () => {
+    const wrapper = shallow(<ImageCarouselMain />); 
+    expect(wrapper.length).toHaveLength(10)
   });
 });

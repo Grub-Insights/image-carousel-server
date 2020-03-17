@@ -11,28 +11,17 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      images: [],
+      placeHolder: 0,
     };
-  }
-
-  componentDidMount() {
-    fetch('/api/carousel/20')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({
-          images: Array.from(data),
-        });
-        console.log(this.state.images);
-      });
   }
 
   render() {
     return (
-      <ImageCarouselMain pictures={this.state.images}/>
+      <ImageCarouselMain />
     );
   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+export default App;
