@@ -12,7 +12,11 @@ class ImageCarouselMain extends React.Component {
 
   render() {
     return (
-      <div>test</div>
+      <div className="carousel">
+        {this.props.pictures.map((picture) => {
+          return <ImageCarouselEntry picture={picture.img_url} />
+        })}
+      </div>
     );
   }
 }

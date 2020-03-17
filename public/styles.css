@@ -1,0 +1,11 @@
+.carousel {
+  display: flex;
+  overflow: hidden;
+}
+
+.images {
+  width: 300px;
+  height: 300px;
+  margin-left: 1px;
+  margin-right: 1px;
+}

@@ -30,11 +30,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="carousel"> 
-        {this.state.images.map((picture) => {
-          return <ImageCarouselEntry picture={picture.img_url} />;
-        })}
-      </div>
+      <ImageCarouselMain pictures={this.state.images}/>
     );
   }
 }
