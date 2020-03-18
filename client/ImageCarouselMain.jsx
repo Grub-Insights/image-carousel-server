@@ -39,14 +39,16 @@ class ImageCarouselMain extends React.Component {
     this.refs.scroller ? (this.refs.scroller.scrollLeft += 200) : null;
   }
 
+ 
+
   render() {
     return (
       <div className="carousel">
-        <ImageCarouselArrows direction="left" clickHandler={this.previousImages} img="&#9664;" />
+        <ImageCarouselArrows direction="left" img="&#9664;" />
         {this.state.images.map((picture) => {
-          return <ImageCarouselEntry picture={picture.img_url} />;
+          return <ImageCarouselEntry clickHandler={this.props.clickHandler} picture={picture.img_url} />;
         })}
-        <ImageCarouselArrows direction="right" clickHandler={this.nextImages} img="&#9654;" />
+        <ImageCarouselArrows direction="right" img="&#9654;" />
       </div>
     );
   }
