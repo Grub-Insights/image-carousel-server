@@ -1,9 +1,7 @@
 .carousel {
   display: inline-block;
-  overflow: auto;
+  overflow-x: scroll;
   white-space: nowrap;
-  scrollbar-width: none;
-  position: absolute;
 }
 
 .images {
@@ -17,7 +15,7 @@
   float: left;
   position: fixed;
   color: white;
-  bottom: 65vh;
+  bottom: 80vh;
   left: 2vw;
 }
 
@@ -25,7 +23,7 @@
   position: fixed;
   right: 2vw;
   color: white;
-  bottom: 65vh;
+  bottom: 80vh;
 
 }
 ::-webkit-scrollbar {

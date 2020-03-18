@@ -3,6 +3,7 @@ import React from 'react';
 import ImageCarouselEntry from './ImageCarouselEntry.jsx';
 import ImageCarouselArrows from './ImageCarouselArrows.jsx';
 
+
 class ImageCarouselMain extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +16,7 @@ class ImageCarouselMain extends React.Component {
 
     this.previousImages = this.previousImages.bind(this);
     this.nextImages = this.nextImages.bind(this);
+    this.focusDiv = React.createRef();
   }
 
   componentDidMount() {
@@ -32,23 +34,28 @@ class ImageCarouselMain extends React.Component {
   }
 
   previousImages() {
-    this.refs.scroller ? (this.refs.scroller.scrollLeft += 200) : null;
+    console.log(this.focusDiv.current)
+    this.focusDiv.current.scrollLeft -= 200;
   }
 
   nextImages() {
-    this.refs.scroller ? (this.refs.scroller.scrollLeft += 200) : null;
+    console.log(this.focusDiv.current)
+    // this.focusDiv.current.scrollLeft += 20;
+    this.focusDiv.current.scroll({
+      right: 300,
+      behavior: 'smooth',
+    });
   }
 
- 
 
   render() {
     return (
-      <div className="carousel">
-        <ImageCarouselArrows direction="left" img="&#9664;" />
+      <div ref={this.focusDiv} className="carousel">
+        <ImageCarouselArrows clickHandler={this.previousImages} direction="left" img="&#9664;" />
         {this.state.images.map((picture) => {
           return <ImageCarouselEntry clickHandler={this.props.clickHandler} picture={picture.img_url} />;
         })}
-        <ImageCarouselArrows direction="right" img="&#9654;" />
+        <ImageCarouselArrows clickHandler={this.nextImages} direction="right" img="&#9654;" />
       </div>
     );
   }

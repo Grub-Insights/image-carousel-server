@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ImageCarouselEntry from './ImageCarouselEntry.jsx'
 import ImageCarouselMain from './ImageCarouselMain.jsx';
-import ModalMain from './ModalMain.jsx'
+import ModalMain from './ModalMain.jsx';
 
 
 class App extends React.Component {
@@ -19,9 +19,9 @@ class App extends React.Component {
   }
 
   clickHandler() {
-    this.setState({
-      clicked: true,
-    });
+    // this.setState({
+    //   clicked: true,
+    // });
     console.log('clicked');
   }
 

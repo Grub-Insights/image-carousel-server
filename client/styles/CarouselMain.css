@@ -1,0 +1,7 @@
+.carousel {
+  display: inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  position: absolute;
+}
