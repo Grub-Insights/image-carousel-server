@@ -12,30 +12,44 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      clicked: false,
+      showModal: false,
+      images: [],
     };
 
-    this.clickHandler = this.clickHandler.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
-  clickHandler() {
-    // this.setState({
-    //   clicked: true,
-    // });
-    console.log('clicked');
+  componentDidMount() {
+    fetch('/api/carousel/20')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+          images: Array.from(data),
+        });
+      });
+  }
+
+  showModal() {
+    this.setState({
+      showModal: true,
+    });
+  }
+
+  hideModal() {
+    this.setState({
+      showModal: false,
+    });
+    console.log('x button clicked');
   }
 
   render() {
-    const hasClicked = this.state.clicked
-    let display
-    if (!hasClicked) {
-      display = <ImageCarouselMain clickHandler={this.clickHandler} />
-    } else {
-      display = <ModalMain />
-    }
     return (
       <div>
-        {display}
+        <ImageCarouselMain showModal={this.showModal} pictures={this.state.images}/>
+        <ModalMain show={this.state.showModal} pictures={this.state.images} hide={this.hideModal} />
       </div>
     );
   }

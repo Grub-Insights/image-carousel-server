@@ -14,38 +14,24 @@ class ImageCarouselMain extends React.Component {
 
     this.previousImages = this.previousImages.bind(this);
     this.nextImages = this.nextImages.bind(this);
-    this.focusDiv = React.createRef();
   }
 
-  componentDidMount() {
-    fetch('/api/carousel/20')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({
-          images: Array.from(data),
-        });
-      });
-  }
 
   previousImages() {
-    console.log(this.focusDiv.current);
     window.scrollBy(-200, 0);
-  }
+  };
 
   nextImages() {
-    console.log(this.focusDiv.current);
     window.scrollBy(200, 0);
-  }
+  };
 
 
   render() {
     return (
-      <div ref={this.focusDiv} className="carousel">
+      <div className="carousel">
         <ImageCarouselArrows clickHandler={this.previousImages} direction="left" img="&#9664;" />
-        {this.state.images.map((picture) => {
-          return <ImageCarouselEntry clickHandler={this.props.clickHandler} picture={picture.img_url} />;
+        {this.props.pictures.map((picture) => {
+          return <ImageCarouselEntry showModal={this.props.showModal} picture={picture.img_url} />;
         })}
         <ImageCarouselArrows clickHandler={this.nextImages} direction="right" img="&#9654;" />
       </div>

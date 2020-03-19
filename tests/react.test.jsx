@@ -11,7 +11,7 @@ describe('ImageCarouselMain', () => {
 
 
   it('Has Access to 10 images form resturant 20', () => {
-    expect(component.find(ImageCarouselEntry)).toHaveLength(10)
+    expect(component.find(ImageCarouselEntry)).toHaveLength(10);
   });
 });
 
@@ -19,6 +19,6 @@ describe('ImageCarouselMain', () => {
 describe('Images', () => {
   const {container} = shallow(<ImageCarouselMain />)
   it('Find Ten <img /> tags with blank text', () => {
-    expect(container.firstChild.classList.contains('images')).toBe(true)
+    expect(container.firstChild.classList.contains('images')).toBe(true);
   });
 });
