@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React from 'react';
-import ImageCarouselEntry from './ImageCarouselEntry.jsx';
-import ImageCarouselArrows from './ImageCarouselArrows.jsx';
+import ImageCarouselEntry from './ImageCarouselEntry';
+import ImageCarouselArrows from './ImageCarouselArrows';
 
 
 class ImageCarouselMain extends React.Component {
@@ -10,8 +10,6 @@ class ImageCarouselMain extends React.Component {
 
     this.state = {
       images: [],
-      index: 0,
-      indexMax: 0,
     };
 
     this.previousImages = this.previousImages.bind(this);
@@ -27,24 +25,18 @@ class ImageCarouselMain extends React.Component {
       .then((data) => {
         this.setState({
           images: Array.from(data),
-          indexMax: Array.from(data).length
         });
-        console.log(this.state.images);
       });
   }
 
   previousImages() {
-    console.log(this.focusDiv.current)
-    this.focusDiv.current.scrollLeft -= 200;
+    console.log(this.focusDiv.current);
+    window.scrollBy(-200, 0);
   }
 
   nextImages() {
-    console.log(this.focusDiv.current)
-    // this.focusDiv.current.scrollLeft += 20;
-    this.focusDiv.current.scroll({
-      right: 300,
-      behavior: 'smooth',
-    });
+    console.log(this.focusDiv.current);
+    window.scrollBy(200, 0);
   }
 
 

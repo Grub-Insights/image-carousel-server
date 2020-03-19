@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1584493609600" clover="3.2.0">
-  <project timestamp="1584493609600" name="All files">
-    <metrics statements="16" coveredstatements="8" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="3" elements="30" coveredelements="11" complexity="0" loc="16" ncloc="16" packages="1" files="3" classes="3"/>
+<coverage generated="1584641356335" clover="3.2.0">
+  <project timestamp="1584641356336" name="All files">
+    <metrics statements="18" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="3" elements="28" coveredelements="12" complexity="0" loc="18" ncloc="18" packages="1" files="3" classes="3"/>
     <file name="ImageCarouselArrows.jsx" path="/Users/Calvin/CapStone/image-carousel-server/client/ImageCarouselArrows.jsx">
       <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <line num="3" count="1" type="stmt"/>
@@ -13,19 +13,21 @@
       <line num="4" count="0" type="stmt"/>
     </file>
     <file name="ImageCarouselMain.jsx" path="/Users/Calvin/CapStone/image-carousel-server/client/ImageCarouselMain.jsx">
-      <metrics statements="12" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="3"/>
-      <line num="8" count="1" type="stmt"/>
-      <line num="10" count="1" type="stmt"/>
-      <line num="16" count="1" type="stmt"/>
-      <line num="17" count="1" type="stmt"/>
-      <line num="21" count="1" type="stmt"/>
+      <metrics statements="14" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="3"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="21" count="2" type="stmt"/>
       <line num="23" count="0" type="stmt"/>
       <line num="26" count="0" type="stmt"/>
-      <line num="30" count="0" type="stmt"/>
-      <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="45" count="1" type="stmt"/>
-      <line num="49" count="0" type="stmt"/>
+      <line num="33" count="0" type="stmt"/>
+      <line num="34" count="0" type="stmt"/>
+      <line num="38" count="0" type="stmt"/>
+      <line num="40" count="0" type="stmt"/>
+      <line num="48" count="2" type="stmt"/>
+      <line num="52" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>
