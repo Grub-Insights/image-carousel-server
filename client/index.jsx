@@ -14,6 +14,7 @@ class App extends React.Component {
     this.state = {
       showModal: false,
       images: [],
+      modalImage: false,
     };
 
     this.showModal = this.showModal.bind(this);
@@ -29,13 +30,16 @@ class App extends React.Component {
         this.setState({
           images: Array.from(data),
         });
+        console.log(Array.from(data));
       });
   }
 
-  showModal() {
+  showModal(event) {
     this.setState({
       showModal: true,
+      modalImage: JSON.parse(event.target.alt),
     });
+    console.log(event.target.alt)
   }
 
   hideModal() {
@@ -49,7 +53,7 @@ class App extends React.Component {
     return (
       <div>
         <ImageCarouselMain showModal={this.showModal} pictures={this.state.images}/>
-        <ModalMain show={this.state.showModal} pictures={this.state.images} hide={this.hideModal} />
+        <ModalMain show={this.state.showModal} pictures={this.state.images} current={this.state.modalImage} hide={this.hideModal} />
       </div>
     );
   }

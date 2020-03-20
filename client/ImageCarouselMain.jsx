@@ -30,8 +30,8 @@ class ImageCarouselMain extends React.Component {
     return (
       <div className="carousel">
         <ImageCarouselArrows clickHandler={this.previousImages} direction="left" img="&#9664;" />
-        {this.props.pictures.map((picture) => {
-          return <ImageCarouselEntry showModal={this.props.showModal} picture={picture.img_url} />;
+        {this.props.pictures.map((picture, index) => {
+          return <ImageCarouselEntry showModal={this.props.showModal} key={index} reference={picture} picture={picture.img_url} />;
         })}
         <ImageCarouselArrows clickHandler={this.nextImages} direction="right" img="&#9654;" />
       </div>
