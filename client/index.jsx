@@ -20,6 +20,7 @@ class App extends React.Component {
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.cycleNextImage = this.cycleNextImage.bind(this);
+    this.cyclePreviousImage = this.cyclePreviousImage.bind(this);
   }
 
   componentDidMount() {
@@ -51,17 +52,30 @@ class App extends React.Component {
   }
 
   cycleNextImage() {
-    const imageIndex = this.state.imageIndex + 1;
-    console.log('before: ', imageIndex);
-    this.setState({
-      imageIndex: imageIndex,
-    }, () => {
-      console.log('after: ', this.state.imageIndex);
-    });
+    const max = this.state.images.length - 1;
+    if (this.state.imageIndex === max) {
+      this.setState({
+        imageIndex: max,
+      });
+    } else {
+      const imageIndex = this.state.imageIndex + 1;
+      this.setState({
+        imageIndex: imageIndex,
+      });
+    }
   }
 
   cyclePreviousImage() {
-
+    if (this.state.imageIndex === 0) {
+      this.setState({
+        imageIndex: 0,
+      });
+    } else {
+      const imageIndex = this.state.imageIndex - 1;
+      this.setState({
+        imageIndex: imageIndex,
+      });
+    }
   }
 
 
@@ -71,7 +85,7 @@ class App extends React.Component {
     return (
       <div>
         <ImageCarouselMain showModal={this.showModal} pictures={images} imageIndex={imageIndex} />
-        { images[imageIndex] && <ModalMain cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
+        { images[imageIndex] && <ModalMain cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
       </div>
     );
   }
