@@ -5,7 +5,9 @@ import ModalSideBar from './ModalSideBar';
 class ModalMain extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      placeholder: 0,
+    }
   }
 
 
@@ -16,7 +18,7 @@ class ModalMain extends React.Component {
         <div>
           <button onClick={this.props.hide}>X</button>
           <div className="modal-main">
-            <button>{"\<=" }</button>
+            <button onClick={this.props.cyclePreviousImage} >{"\<=" }</button>
             <button onClick={this.props.cycleNextImage} >{"=\>" }</button>
             <ModalMainImage displayModal ={this.props.displayModal} current={this.props.pictures[this.props.current].img_url} />
           </div>
