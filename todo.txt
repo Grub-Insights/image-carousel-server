@@ -1,0 +1,26 @@
+
+- add next/previous buttons to modal
+  - click to cycle through
+
+
+
+
+
+
+
+
+
+
+
+
+  
+- side-bar reflects change on click
+  - (in sidebar) current main image is grayed out with blue border
+    - should change with next/previous is clicked
+  - click sidebar thumbnail, changes main image
+- modal displays user info (transparent bar at bottom of main image)
+
+
+
+- sidebar (styling)
+  - add scrollbar

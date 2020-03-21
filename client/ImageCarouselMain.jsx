@@ -2,6 +2,7 @@
 import React from 'react';
 import ImageCarouselEntry from './ImageCarouselEntry';
 import ImageCarouselArrows from './ImageCarouselArrows';
+import styles from './styles/CarouselMain'
 
 
 class ImageCarouselMain extends React.Component {
@@ -31,7 +32,7 @@ class ImageCarouselMain extends React.Component {
       <div className="carousel">
         <ImageCarouselArrows clickHandler={this.previousImages} direction="left" img="&#9664;" />
         {this.props.pictures.map((picture, index) => {
-          return <ImageCarouselEntry showModal={this.props.showModal} key={index} reference={picture} picture={picture.img_url} />;
+          return <ImageCarouselEntry showModal={this.props.showModal} key={index} imageIndex={index} url={picture.img_url} />;
         })}
         <ImageCarouselArrows clickHandler={this.nextImages} direction="right" img="&#9654;" />
       </div>

@@ -12,13 +12,14 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      showModal: false,
+      displayModal: false,
       images: [],
-      modalImage: false,
+      imageIndex: 0,
     };
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.cycleNextImage = this.cycleNextImage.bind(this);
   }
 
   componentDidMount() {
@@ -34,26 +35,43 @@ class App extends React.Component {
       });
   }
 
-  showModal(event) {
+  showModal(imageIndex) {
     this.setState({
-      showModal: true,
-      modalImage: JSON.parse(event.target.alt),
+      displayModal: true,
+      imageIndex: imageIndex,
     });
-    console.log(event.target.alt)
+    console.log("showModal in index.jsx! with imageIndex: ", imageIndex)
   }
 
   hideModal() {
     this.setState({
-      showModal: false,
+      displayModal: false,
     });
     console.log('x button clicked');
   }
 
+  cycleNextImage() {
+    const imageIndex = this.state.imageIndex + 1;
+    console.log('before: ', imageIndex);
+    this.setState({
+      imageIndex: imageIndex,
+    }, () => {
+      console.log('after: ', this.state.imageIndex);
+    });
+  }
+
+  cyclePreviousImage() {
+
+  }
+
+
+
   render() {
+    const { images, imageIndex, displayModal } = this.state;
     return (
       <div>
-        <ImageCarouselMain showModal={this.showModal} pictures={this.state.images}/>
-        <ModalMain show={this.state.showModal} pictures={this.state.images} current={this.state.modalImage} hide={this.hideModal} />
+        <ImageCarouselMain showModal={this.showModal} pictures={images} imageIndex={imageIndex} />
+        { images[imageIndex] && <ModalMain cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
       </div>
     );
   }

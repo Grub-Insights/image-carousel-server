@@ -6,22 +6,22 @@ class ModalMain extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      placeHolder: 0,
-    };
   }
 
+
   render() {
-    const showClassName = this.props.show ? "modal display-block" : "modal display-none"
+    const showClassName = this.props.displayModal ? "modal display-block" : "modal display-none"
     return (
       <div className={showClassName}>
         <div>
           <button onClick={this.props.hide}>X</button>
           <div className="modal-main">
-            <ModalMainImage show ={this.props.show} current={this.props.current.img_url} />
+            <button>{"\<=" }</button>
+            <button onClick={this.props.cycleNextImage} >{"=\>" }</button>
+            <ModalMainImage displayModal ={this.props.displayModal} current={this.props.pictures[this.props.current].img_url} />
           </div>
           <div className="modal-sidebar" >
-            <ModalSideBar pictures={this.props.images}/>
+            <ModalSideBar pictures={this.props.pictures}/>
           </div>
         </div>
       </div>

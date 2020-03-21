@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import ModalSideBarEntry from './ModalSideBarEntry'
 
-const ModalSideBar = () => (
-  <div>Place Holder: Images goes here</div>
+const ModalSideBar = ({pictures}) => (
+  <div className="sidebar">
+    {pictures.map((picture) => {
+      return <ModalSideBarEntry picture={picture} />
+    })}
+  </div>
 
 );
 
