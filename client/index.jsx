@@ -21,6 +21,7 @@ class App extends React.Component {
     this.hideModal = this.hideModal.bind(this);
     this.cycleNextImage = this.cycleNextImage.bind(this);
     this.cyclePreviousImage = this.cyclePreviousImage.bind(this);
+    this.updateMianImage = this.updateMianImage.bind(this);
   }
 
   componentDidMount() {
@@ -41,7 +42,6 @@ class App extends React.Component {
       displayModal: true,
       imageIndex: imageIndex,
     });
-    console.log("showModal in index.jsx! with imageIndex: ", imageIndex)
   }
 
   hideModal() {
@@ -78,14 +78,18 @@ class App extends React.Component {
     }
   }
 
-
+  updateMianImage(imageIndex) {
+    this.setState({
+      imageIndex: imageIndex,
+    });
+  }
 
   render() {
     const { images, imageIndex, displayModal } = this.state;
     return (
       <div>
         <ImageCarouselMain showModal={this.showModal} pictures={images} imageIndex={imageIndex} />
-        { images[imageIndex] && <ModalMain cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
+        { images[imageIndex] && <ModalMain updateMianImage={this.updateMianImage} cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
       </div>
     );
   }

@@ -1,6 +1,8 @@
 
 - add next/previous buttons to modal
   - click to cycle through
+    - refactor "modalImage" state property to be the index of the current image instead of the whole image object
+      - 
 
 
 
@@ -13,7 +15,7 @@
 
 
 
-  
+
 - side-bar reflects change on click
   - (in sidebar) current main image is grayed out with blue border
     - should change with next/previous is clicked

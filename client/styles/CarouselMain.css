@@ -5,3 +5,7 @@
   scrollbar-width: none;
   position: absolute;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

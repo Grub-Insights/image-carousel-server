@@ -1,18 +1,18 @@
-.carousel {
+/* .carousel {
   display: inline-block;
   overflow-x: scroll;
   white-space: nowrap;
-}
+} */
 
-.images {
+/* .images {
   width: 300px;
   height: 250px;
   margin-left: 1px;
   margin-right: 1px;
-  object-fit: cover;
-  
-}
-.left {
+  object-fit: cover; 
+} */
+
+/* .left {
   float: left;
   position: fixed;
   color: white;
@@ -25,8 +25,7 @@
   right: 2vw;
   color: white;
   bottom: 80vh;
-
-}
+} */
 
 .modal {
   position: fixed;
@@ -37,7 +36,7 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.modal-main {
+/* .modal-main {
   border: 1px transparent;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -50,11 +49,6 @@
   transform: translate(-50%,-50%);
 }
 
-.modal-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
 
 .modal-sidebar {
   border: 1px transparent;
@@ -67,6 +61,12 @@
   max-height: 90vh;
   top: 50vh;
   transform: translate(-50%,-50%);
+} */
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .sidebar {
@@ -82,8 +82,15 @@
   height: 100px;
 }
 
+.user-info {
+  color: white;
+}
+.user-info-profile-picture {
+  width: 100px;
+  height: 100px;
+}
 
-.display-block {
+/* .display-block {
   display: block;
 }
 
@@ -93,4 +100,4 @@
 
 ::-webkit-scrollbar {
   display: none;
-}
+} */

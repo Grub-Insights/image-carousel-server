@@ -1,10 +1,8 @@
 import React from 'react';
+import styles from './styles/ImageCarouselEntry'
 
 const ImageCarouselEntry = ({ url, showModal, imageIndex}) => (
-  <img className="images" onClick={() => {
-    console.log('IMAGEIDX IN ENTRY:', imageIndex);
-    showModal(imageIndex);
-  }} src={url} />
+  <img className={styles.images} onClick={() => {showModal(imageIndex);}} src={url} alt="" />
 );
 
 export default ImageCarouselEntry;

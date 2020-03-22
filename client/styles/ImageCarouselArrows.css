@@ -1,0 +1,14 @@
+.left {
+  float: left;
+  position: fixed;
+  color: white;
+  bottom: 80vh;
+  left: 2vw;
+}
+
+.right {
+  position: fixed;
+  right: 2vw;
+  color: white;
+  bottom: 80vh;
+}

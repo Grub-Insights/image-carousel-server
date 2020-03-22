@@ -1,0 +1,34 @@
+.modal_main {
+  border: 1px transparent;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position:fixed;
+  background: black;
+  width: 60vw;
+  height: 90vh;
+  top:50vh;
+  left: 35%;
+  transform: translate(-50%,-50%);
+}
+
+
+.modal_sidebar {
+  border: 1px transparent;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: fixed;
+  background:white;
+  width: 30vw;
+  left: 80vw;
+  max-height: 90vh;
+  top: 50vh;
+  transform: translate(-50%,-50%);
+}
+
+.display_block {
+  display: block;
+}
+
+.display_none {
+  display: none;
+}
