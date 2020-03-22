@@ -19,11 +19,11 @@ class ImageCarouselMain extends React.Component {
 
 
   previousImages() {
-    window.scrollBy(-200, 0);
+    window.scrollBy(-1600, 0);
   };
 
   nextImages() {
-    window.scrollBy(200, 0);
+    window.scrollBy(1600, 0);
   };
 
 

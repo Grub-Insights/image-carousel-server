@@ -1,0 +1,11 @@
+.sidebar_image {
+  width: 100px;
+  height: 100px;
+}
+
+.sidebar_image_current {
+  width: 100px;
+  height: 100px;
+  border: 2px blue solid;
+  border-radius: 5px;
+}

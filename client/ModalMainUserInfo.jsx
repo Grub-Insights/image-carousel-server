@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './styles/ModalMainUserInfo'
 
 const ModalMainUserInfo = ({currentObject}) => {
   const {date_of, 
@@ -12,11 +13,13 @@ const ModalMainUserInfo = ({currentObject}) => {
         } = currentObject;
 
   return (
-    <div className="user-info">
-      <div className="user-info-description"> {descript} </div>
-      <div> 
-        <img className="user-info-profile-picture" src={profile_img} alt="" />
-        Friend Count:{friend_count} Review Count={review_count} </div>
+    <div className={styles.user_info}>
+      <div className={styles.user_info_description}> {descript} </div>
+      <div>
+        <img className={styles.user_info_profile_picture} src={profile_img} alt="" />
+        Friend Count= {friend_count} 
+        Review Count= {review_count} 
+      </div>
     </div>
   );
 };

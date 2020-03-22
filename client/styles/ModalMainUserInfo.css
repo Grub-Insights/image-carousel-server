@@ -1,0 +1,13 @@
+.user_info {
+  color: white;
+}
+
+.user_info_description {
+  width: 200px;
+  height: 200px;
+}
+
+.user_info_profile_picture {
+  width: 100px;
+  height: 100px;
+}
