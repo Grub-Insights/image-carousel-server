@@ -16,13 +16,13 @@
 1. [Development](#development)
 
 ## Usage
-  NPM Install
 
-  "react-watch": "webpack -d --watch",
-  "seedDB": "node ./fakeData.js",
-  "start": "nodemon server/index.js",
-    
-  run these and use localhost 3000
+- NPM install
+- NPM run react-watch
+- NPM run seedDB (use "mysql -u [username] < ./database.schema.sql") Automatic database drop everytime you load the schema
+- NPM start
+
+use http://localhost:3000/index.html
 
 ## Requirements
 
