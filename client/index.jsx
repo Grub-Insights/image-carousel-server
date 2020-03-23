@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import ImageCarouselEntry from './ImageCarouselEntry.jsx'
 import ImageCarouselMain from './ImageCarouselMain.jsx';
 import ModalMain from './ModalMain.jsx';
+import styles from './styles/Index'
 
 
 class App extends React.Component {
@@ -87,7 +88,7 @@ class App extends React.Component {
   render() {
     const { images, imageIndex, displayModal } = this.state;
     return (
-      <div>
+      <div className={styles.test}>
         <ImageCarouselMain showModal={this.showModal} pictures={images} imageIndex={imageIndex} />
         { images[imageIndex] && <ModalMain updateMianImage={this.updateMianImage} cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
       </div>

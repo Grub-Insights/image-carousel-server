@@ -1,6 +1,7 @@
 .sidebar_image {
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
 }
 
 .sidebar_image_current {
@@ -8,4 +9,19 @@
   height: 100px;
   border: 2px blue solid;
   border-radius: 5px;
+}
+
+.image_small {
+  max-height: 150px;
+  max-width: 200px;
+}
+
+.image_wide {
+  max-height: 200px;
+  max-width: 350px;
+}
+
+.sidebar_image_container {
+  width: 300px;
+  height: 250px;
 }

@@ -13,10 +13,11 @@
   border-bottom-left-radius: 10px;
   position:fixed;
   background: black;
-  width: 60vw;
-  height: 90vh;
-  top:50vh;
-  left: 35%;
+  bottom: 0vh;
+  height: 95vh;
+  width: 49vw;
+  top: 50vh;
+  left: 40.5vw;
   transform: translate(-50%,-50%);
 }
 
@@ -27,11 +28,24 @@
   border-bottom-right-radius: 10px;
   position: fixed;
   background:white;
-  width: 30vw;
-  left: 80vw;
-  max-height: 90vh;
+  width: 18.5vw;
+  left: 74vw;
+  max-height: 95vh;
+  height: 95vh;
   top: 50vh;
   transform: translate(-50%,-50%);
+}
+
+.btn_right {
+  position: fixed;
+  bottom: 50vh;
+  left: 47vw;
+}
+
+.btn_left {
+  position: fixed;
+  bottom: 50vh;
+  right: 47.3vw;
 }
 
 .display_block {
