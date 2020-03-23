@@ -19,6 +19,14 @@
 
 - NPM install
 - NPM run react-watch
+- create a config.js file inside /database/ folder. 
+
+insert module.exports = {
+    user: [username],
+
+    database: 'carousel'
+}
+
 - NPM run seedDB (use "mysql -u [username] < ./database.schema.sql") Automatic database drop everytime you load the schema
 - NPM start
 
