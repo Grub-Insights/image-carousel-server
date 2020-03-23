@@ -15,6 +15,18 @@ const getPictures = (ID, callback) => {
   });
 };
 
+const getRestaurantName = (ID, callback) => {
+  const queryStr = `select res_name from restaurants where restaurants.id = ${ID}`;
+  connection.query(queryStr, (err, results) => {
+    if (err) {
+      console.log('error in getPictures: ', err);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
 module.exports = {
   getPictures,
+  getRestaurantName,
 };
