@@ -21,9 +21,10 @@
 - NPM run react-watch
 - create a config.js file inside /database/ folder. 
 
-insert module.exports = {
-    user: [username],
+insert 
+module.exports = {
 
+    user: [username],
     database: 'carousel'
 }
 
