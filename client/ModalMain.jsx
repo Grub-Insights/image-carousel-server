@@ -4,7 +4,7 @@ import ModalSideBar from './ModalSideBar';
 import ModalMainUserInfo from './ModalMainUserInfo';
 import styles from './styles/ModalMain'
 
-const ModalMain = ({displayModal, pictures, updateMianImage, cyclePreviousImage, cycleNextImage, hide, current }) => {
+const ModalMain = ({restaurantName, displayModal, pictures, updateMianImage, cyclePreviousImage, cycleNextImage, hide, current }) => {
   // const showClassName = this.props.displayModal ? "modal display_block" : "modal display_none"
   if (displayModal) {
     return (
@@ -18,7 +18,8 @@ const ModalMain = ({displayModal, pictures, updateMianImage, cyclePreviousImage,
           </div>
           <ModalMainUserInfo currentObject={pictures[current]} />
           <div className={styles.modal_sidebar}>
-            <ModalSideBar updateMianImage={updateMianImage} pictures={pictures}/>
+            <div className={styles.restaurant_name}> {restaurantName} </div>
+            <ModalSideBar updateMianImage={updateMianImage} pictures={pictures} restaurantName={restaurantName} />
           </div>
         </div>
       </div>

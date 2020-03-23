@@ -78,6 +78,14 @@
   font-size: inherit;
 }
 
+.restaurant_name {
+  position: fixed;
+  right: 11.5vw;
+  top: 3vh;
+  font-size: larger;
+  font-weight: bold;
+}
+
 .display_block {
   display: block;
 }
