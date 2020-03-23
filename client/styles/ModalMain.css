@@ -1,0 +1,95 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal_main {
+  border: 1px transparent;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position:fixed;
+  background: black;
+  bottom: 0vh;
+  height: 95vh;
+  width: 49vw;
+  top: 50vh;
+  left: 40.5vw;
+  transform: translate(-50%,-50%);
+}
+
+
+.modal_sidebar {
+  border: 1px transparent;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: fixed;
+  background:white;
+  width: 18.5vw;
+  left: 74vw;
+  max-height: 95vh;
+  height: 95vh;
+  top: 50vh;
+  transform: translate(-50%,-50%);
+}
+
+.btn_right {
+  position: fixed;
+  bottom: 50vh;
+  left: 47vw;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: white;
+  font-size: x-large;
+}
+
+.btn_left {
+  position: fixed;
+  bottom: 50vh;
+  right: 47.3vw;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: white;
+  font-size: x-large;
+}
+
+.btn_x {
+  position: fixed;
+  top: 0.2vh;
+  right: 17vw;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: inherit;
+  overflow: hidden;
+  outline: none;
+  color: white;
+  font-size: inherit;
+}
+
+.restaurant_name {
+  position: fixed;
+  right: 11.5vw;
+  top: 3vh;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.display_block {
+  display: block;
+}
+
+.display_none {
+  display: none;
+}

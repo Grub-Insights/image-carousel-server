@@ -1,0 +1,39 @@
+.user_info {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 1px transparent;
+  width: 48.8vw;
+  height: 10vh;
+  position: fixed;
+  left: 16vw;
+  bottom: 2.5vh;
+  border-radius: 10px;
+}
+
+.user_info_description {
+  left: 16.5vw;
+  position: fixed;
+}
+
+.user_info_profile_picture {
+  bottom: 4vh;
+  width: 4vh;
+  height: 4vh;
+  object-fit: cover;
+  position: fixed;
+  left: 16.5vw;
+  border: 1px transparent;
+  border-radius: 5px;
+}
+
+.user_info_stats {
+  position: fixed;
+  bottom: 4vh;
+  left: 19vw;
+}
+
+.user_name {
+  position: fixed;
+  bottom: 6vh;
+  left: 19vw;
+}

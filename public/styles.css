@@ -1,0 +1,107 @@
+/* .carousel {
+  display: inline-block;
+  overflow-x: scroll;
+  white-space: nowrap;
+} */
+
+/* .images {
+  width: 300px;
+  height: 250px;
+  margin-left: 1px;
+  margin-right: 1px;
+  object-fit: cover; 
+} */
+
+/* .left {
+  float: left;
+  position: fixed;
+  color: white;
+  bottom: 80vh;
+  left: 2vw;
+}
+
+.right {
+  position: fixed;
+  right: 2vw;
+  color: white;
+  bottom: 80vh;
+} */
+
+/* .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+} */
+
+/* .modal-main {
+  border: 1px transparent;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position:fixed;
+  background: black;
+  width: 60vw;
+  height: 90vh;
+  top:50vh;
+  left: 35%;
+  transform: translate(-50%,-50%);
+}
+
+
+.modal-sidebar {
+  border: 1px transparent;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: fixed;
+  background:white;
+  width: 30vw;
+  left: 80vw;
+  max-height: 90vh;
+  top: 50vh;
+  transform: translate(-50%,-50%);
+} */
+
+/* .modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+} */
+
+/* .sidebar {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  white-space: nowrap;
+  max-height: 90vh;
+} */
+
+/* .sidebar-image {
+  width: 100px;
+  height: 100px;
+} */
+
+.user-info {
+  color: white;
+}
+.user-info-profile-picture {
+  width: 100px;
+  height: 100px;
+}
+
+/* .display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+} */
+
+html {
+  scroll-behavior: smooth;
+}
