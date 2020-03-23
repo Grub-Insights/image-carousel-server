@@ -31,8 +31,9 @@ module.exports = {
 
 - in the terminal at the root of the repo, enter:
   - mysql -u [username] < ./database.schema.sql<br/> 
-    or mysql -u [username] -p [password] < ./database.schema.sql
-- NPM run seedDB Automatic database drop everytime you load the schema
+    or mysql -u [username] -p [password] < ./database.schema.sql<br/>
+    Automatic database drop everytime you load the schema
+- NPM run seedDB
 - NPM start
 
 use http://localhost:3000/index.html
