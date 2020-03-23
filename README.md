@@ -16,8 +16,13 @@
 1. [Development](#development)
 
 ## Usage
+  NPM Install
 
-> Some usage instructions
+  "react-watch": "webpack -d --watch",
+  "seedDB": "node ./fakeData.js",
+  "start": "nodemon server/index.js",
+    
+  run these and use localhost 3000
 
 ## Requirements
 
