@@ -10,11 +10,11 @@ const ModalMain = ({displayModal, pictures, updateMianImage, cyclePreviousImage,
     return (
       <div id="outer most div" className={[styles.modal, styles.display_block].join(' ')}>
         <div id="intermediate div (no class)" >
-          <button onClick={hide}>X</button>
+          <button className={styles.btn_x} onClick={hide}>Close X</button>
           <div id="inner div has ModalMainImage inside" className={styles.modal_main}>
             <ModalMainImage displayModal={displayModal} current={pictures[current].img_url} />
-            <button className={styles.btn_left} onClick={cyclePreviousImage} >{"\<=" }</button>
-            <button className={styles.btn_right} onClick={cycleNextImage} >{"=\>" }</button>
+            <button className={styles.btn_left} onClick={cyclePreviousImage} >&#9664;</button>
+            <button className={styles.btn_right} onClick={cycleNextImage} >&#9654;</button>
           </div>
           <ModalMainUserInfo currentObject={pictures[current]} />
           <div className={styles.modal_sidebar}>
@@ -30,8 +30,8 @@ const ModalMain = ({displayModal, pictures, updateMianImage, cyclePreviousImage,
       <div>
         <button onClick={hide}>X</button>
         <div className={styles.modal_main}>
-          <button onClick={cyclePreviousImage} >{"\<=" }</button>
-          <button onClick={cycleNextImage} >{"=\>" }</button>
+          <button onClick={cyclePreviousImage} >{"/<"}</button>
+          <button onClick={cycleNextImage} >"{">/"}</button>
           <ModalMainImage displayModal={displayModal} current={pictures[current].img_url} />
         </div>
         <ModalMainUserInfo currentObject={pictures[current]} />

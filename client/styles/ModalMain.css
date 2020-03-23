@@ -40,12 +40,42 @@
   position: fixed;
   bottom: 50vh;
   left: 47vw;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: white;
+  font-size: x-large;
 }
 
 .btn_left {
   position: fixed;
   bottom: 50vh;
   right: 47.3vw;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: white;
+  font-size: x-large;
+}
+
+.btn_x {
+  position: fixed;
+  top: 0.2vh;
+  right: 17vw;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: inherit;
+  overflow: hidden;
+  outline: none;
+  color: white;
+  font-size: inherit;
 }
 
 .display_block {
