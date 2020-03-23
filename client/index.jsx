@@ -16,6 +16,7 @@ class App extends React.Component {
       displayModal: false,
       images: [],
       imageIndex: 0,
+      restaurantName: "Placeholder",
     };
 
     this.showModal = this.showModal.bind(this);
@@ -34,7 +35,17 @@ class App extends React.Component {
         this.setState({
           images: Array.from(data),
         });
-        console.log(Array.from(data));
+      });
+
+    fetch('/api/carousel/20/restaurant_name')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+          restaurantName: Array.from(data),
+        });
+        console.log('rest name: ', Array.from(data));
       });
   }
 
@@ -86,11 +97,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { images, imageIndex, displayModal } = this.state;
+    const { images, imageIndex, displayModal, restaurantName } = this.state;
     return (
       <div className={styles.test}>
         <ImageCarouselMain showModal={this.showModal} pictures={images} imageIndex={imageIndex} />
-        { images[imageIndex] && <ModalMain updateMianImage={this.updateMianImage} cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
+        { images[imageIndex] && <ModalMain restaurantName={restaurantName[0].res_name} updateMianImage={this.updateMianImage} cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
       </div>
     );
   }
