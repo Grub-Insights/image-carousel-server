@@ -6,9 +6,9 @@ const Db = require('../database/index.js');
 
 const app = express();
 
-app.get('/', (req, res) => {
-  console.log('Pinged');
-});
+// app.get('/', (req, res) => {
+//   console.log('Pinged');
+// });
 
 app.use(express.static(path.join(__dirname, '/../public')));
 
