@@ -5,6 +5,7 @@
   width:100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
 }
 
 .modal_main {
@@ -19,6 +20,7 @@
   top: 50vh;
   left: 40.5vw;
   transform: translate(-50%,-50%);
+  z-index: 10;
 }
 
 
@@ -34,6 +36,7 @@
   height: 95vh;
   top: 50vh;
   transform: translate(-50%,-50%);
+  z-index: 10;
 }
 
 .btn_right {
@@ -48,6 +51,7 @@
   outline:none;
   color: white;
   font-size: x-large;
+  z-index: 10;
 }
 
 .btn_left {
@@ -62,6 +66,7 @@
   outline:none;
   color: white;
   font-size: x-large;
+  z-index: 10;
 }
 
 .btn_x {
@@ -76,6 +81,7 @@
   outline: none;
   color: white;
   font-size: inherit;
+  z-index: 10;
 }
 
 .restaurant_name {
@@ -84,10 +90,12 @@
   top: 3vh;
   font-size: larger;
   font-weight: bold;
+  z-index: 10;
 }
 
 .display_block {
   display: block;
+  z-index: 10;
 }
 
 .display_none {

@@ -4,6 +4,7 @@
   white-space: nowrap;
   scrollbar-width: none;
   position: absolute;
+  z-index: 1;
 }
 
 ::-webkit-scrollbar {
