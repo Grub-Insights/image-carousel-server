@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
 const express = require('express');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 const path = require('path');
 const Db = require('../database/index.js');
 
 const app = express();
-
+app.use(cors());
 // app.get('/', (req, res) => {
 //   console.log('Pinged');
 // });
