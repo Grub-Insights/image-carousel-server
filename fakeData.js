@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const mysql = require('mysql');
 const faker = require('faker');
 const mysqlConfig = require('./database/config.js');
@@ -34,8 +35,6 @@ const generate = (callback) => {
     'Gyro',
     'Garbanzo Beans',
   ];
-
-  let restaurants = [];
   const foodImages = [
     'https://eclectictacoimagebucket.s3-us-west-1.amazonaws.com/anise-aroma-art-bazaar-277253.jpg',
     'https://eclectictacoimagebucket.s3-us-west-1.amazonaws.com/appetizing-bread-breakfast-close-up-357573.jpg',
@@ -94,11 +93,7 @@ const generate = (callback) => {
     'https://elclectictacoportraits.s3-us-west-1.amazonaws.com/women-s-white-and-black-button-up-collared-shirt-774909.jpg',
   ];
 
-  for (let i = 0; i <= 100; i += 1) {
-    restaurants.push(faker.company.companyName());
-  }
-
-  callback(names, food, restaurants, foodImages, profileImg);
+  callback(names, food, foodImages, profileImg);
 };
 
 function getRandomIntInclusive(min, max) {
@@ -108,14 +103,87 @@ function getRandomIntInclusive(min, max) {
 }
 
 const insertFakeData = () => {
+  connection.query(`DROP DATABASE IF EXISTS carousel;`, (err) => {
+    if (err) {
+      console.log('SQL did not drop Carousel Database: ', err);
+    }
+  });
+
+  connection.query(`CREATE DATABASE carousel;`, (err) => {
+    if (err) {
+      console.log('SQL did not create Carousel Database: ', err);
+    }
+  });
+
+  connection.query(`USE carousel;`, (err) => {
+    if (err) {
+      console.log('SQL did not use Carousel Database');
+    }
+  });
+
+  const createRestaurantsTable = `CREATE TABLE restaurants (
+    id int NOT NULL ,
+    res_name VARCHAR(40),
+    PRIMARY KEY (id)
+    )`;
+
+  connection.query(createRestaurantsTable, (err) => {
+    if (err) {
+      console.log('DB did not create restaurants table');
+    }
+  });
+
+  const createUsersTable = `CREATE TABLE users (
+    id int NOT NULL , 
+    name_user VARCHAR(50) NOT NULL,
+    profile_img VARCHAR(255) NOT NULL,
+    friend_count int(200) NOT NULL,
+    review_count int(255) NOT NULL,
+    helpful_count int(50) NOT NULL,
+    elite_flag boolean NOT NULL,
+    PRIMARY KEY (id)
+  )`;
+
+  connection.query(createUsersTable, (err) => {
+    if (err) {
+      console.log('DB did not create users table');
+    }
+  });
+
+  const createPicturesTable = `CREATE TABLE pictures (
+    id int NOT NULL  ,
+    id_user int NOT NULL ,
+    img_url VARCHAR(255) NOT NULL,
+    descript VARCHAR(100) NOT NULL,
+    date_of VARCHAR(100),
+    restaurant_id int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_user) 
+        REFERENCES users(id),
+    FOREIGN KEY (restaurant_id)
+        REFERENCES restaurants(id)
+  )`;
+
+  connection.query(createPicturesTable, (err) => {
+    if (err) {
+      console.log('DB did not create pictures table');
+    }
+  });
+
+
   const flag = [true, false];
-  generate((userNames, foodDesc, restaurants, foodImages, profileImages) => {
+  generate((userNames, foodDesc, foodImages, profileImages) => {
     // insert 100 restaurants
     for (let i = 1; i <= 100; i += 1) {
-      const randomIdx = Math.floor(Math.random() * restaurants.length);
-      const temp = restaurants[randomIdx];
+      // const randomIdx = Math.floor(Math.random() * restaurants.length);
+      const temp = faker.company.companyName();
       const restaurantQuery = `INSERT INTO restaurants(id, res_name) VALUES(${i}, '${temp}')`;
-      connection.query(restaurantQuery);
+      // console.log(restaurantQuery);
+      connection.query(restaurantQuery, (err) => {
+        if (err !== null) {
+          console.log('error in restaurant query: ', err);
+        }
+      });
     }
     // insert 50 users
     for (let x = 1; x <= 50; x += 1) {
@@ -128,19 +196,39 @@ const insertFakeData = () => {
       const helpfulCount = getRandomIntInclusive(0, 50);
       const eliteFlag = Math.floor(Math.random() * flag.length);
       const userQuery = `INSERT INTO users(id, name_user, profile_img, friend_count, review_count, helpful_count, elite_flag) VALUES(${x}, '${tempName}', '${tempImg}', '${friendCount}', '${reviewCount}', '${helpfulCount}', '${eliteFlag}' )`;
-      connection.query(userQuery);
+      connection.query(userQuery, (err) => {
+        if (err !== null) {
+          console.log('error in users query: ', err)
+        }
+      });
     }
     // insert 50 pictures
     for (let j = 1; j < 1000; j += 1) {
       const userId = getRandomIntInclusive(1, 50);
       const imgUrl = foodImages[getRandomIntInclusive(0, 33)];
       const foodDescript = foodDesc[Math.floor(Math.random() * foodDesc.length)];
-      const date = faker.date.recent();
+      const day = getRandomIntInclusive(1, 30);
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const month = months[Math.floor(Math.random() * months.length)];
+      const year = getRandomIntInclusive(2000, 2020);
+      const date = `${month} ${day}, ${year}`;
+
       const resId = getRandomIntInclusive(1, 100);
       const resQuery = `INSERT INTO pictures(id, id_user, img_url, descript, date_of, restaurant_id) VALUES(${j}, '${userId}', '${imgUrl}', '${foodDescript}', '${date}', '${resId}')`;
-      connection.query(resQuery);
+      connection.query(resQuery, (err) => {
+        if (err) {
+          console.log('error in pictures query: ', err);
+        }
+      });
     }
   });
-  return console.log('DB seeded');
+
+  connection.end((err) => {
+    if (err !== null) {
+      console.log('DB failed to disconnect');
+    }
+    console.log('DB disconnected');
+  });
 };
+
 insertFakeData();
