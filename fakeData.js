@@ -2,8 +2,14 @@
 const mysql = require('mysql');
 const faker = require('faker');
 const mysqlConfig = require('./database/config.js');
+require('dotenv').config();
 
-const connection = mysql.createConnection(mysqlConfig);
+const connection = mysql.createConnection({
+  database: process.env.DATABASE,
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASS,
+});
 
 
 const generate = (callback) => {

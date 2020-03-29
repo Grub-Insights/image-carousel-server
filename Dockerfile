@@ -13,10 +13,10 @@ COPY . /docker/app
 # Does your app have any dependencies that should be installed?
 RUN npm install
 # RUN npm run react-watch
-RUN npm run seedDB
+# RUN npm run seedDB
 
 # What port will the container talk to the outside world with once created?
-EXPOSE 3000
+EXPOSE 3010
 
 # How do you start your app?
 CMD [ "npm", "start" ]

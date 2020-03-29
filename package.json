@@ -9,7 +9,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-watch": "webpack -d --watch",
+    "react-watch": "webpack -d",
     "seedDB": "node ./fakeData.js",
     "start": "nodemon server/index.js",
     "test": "jest --coverage"
@@ -32,6 +32,7 @@
     "babel-loader": "^8.0.6",
     "cors": "^2.8.5",
     "css-loader": "^3.4.2",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
