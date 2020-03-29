@@ -1,14 +1,15 @@
 .left {
   float: left;
   position: fixed;
-  color: white;
+  fill: white;
   bottom: 86vh;
   left: 1vw;
+  -webkit-transform:rotate(180deg);
 }
 
 .right {
   position: fixed;
   right: 1vw;
-  color: white;
+  fill: white;
   bottom: 86vh;
 }
