@@ -62,3 +62,23 @@
   left: 20vw;
   bottom: 4vh;
 }
+
+.review_count {
+  position: fixed;
+  bottom: 4vh;
+  left: 22.4vw;
+}
+
+.star {
+  position: fixed;
+  fill: #f15c00;
+  left: 21.3vw;
+  bottom: 3.9vh;
+}
+
+.date {
+  position: fixed;
+  bottom: 9vh;
+  font-size: small;
+  opacity: 0.5;
+}
