@@ -21,12 +21,15 @@
 - NPM run react-watch
 - create a .env file inside the root folder
 - inside the .env file
-{
+
+```
 DATABASE=carousel 
 HOST=[ip/localhost]
 USER=root
 PASS=[...]
 }
+```
+
 - NPM run seedDB
 - NPM start
 
