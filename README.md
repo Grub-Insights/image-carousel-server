@@ -19,24 +19,16 @@
 
 - NPM install
 - NPM run react-watch
-- create a config.js file inside /database/ folder. 
-- inside config.js insert
+- create a .env file inside the root folder
+- inside the .env file
 
-module.exports = {
+DATABASE=carousel 
+HOST=[ip/localhost]
+USER=root
+PASS=[...]
 
-    user: [username],
-    password: [if you have one],
-    database: 'carousel'
-}
-
-- in the terminal at the root of the repo, enter:
-  - mysql -u [username] < ./database.schema.sql<br/> 
-    or mysql -u [username] -p [password] < ./database.schema.sql<br/>
-    Automatic database drop everytime you load the schema
 - NPM run seedDB
 - NPM start
-
-use http://localhost:3000/index.html
 
 ## Requirements
 
