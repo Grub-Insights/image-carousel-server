@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://54.193.12.226:3010/api/carousel/20', {
+    fetch('18.144.163.108:3010/api/carousel/20', {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -39,7 +39,7 @@ class App extends React.Component {
         });
       });
 
-    fetch('http://54.193.12.226:3010/api/carousel/20/restaurant_name', {
+    fetch('18.144.163.108:3010/api/carousel/20/restaurant_name', {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -104,7 +104,7 @@ class App extends React.Component {
   render() {
     const { images, imageIndex, displayModal, restaurantName } = this.state;
     return (
-      <div className={styles.test}>
+      <div>
         <ImageCarouselMain showModal={this.showModal} pictures={images} imageIndex={imageIndex} />
         { images[imageIndex] && <ModalMain restaurantName={restaurantName[0].res_name} updateMianImage={this.updateMianImage} cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
       </div>
