@@ -9,7 +9,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-watch": "webpack -d --watch",
+    "react-watch": "webpack -d",
     "seedDB": "node ./fakeData.js",
     "start": "nodemon server/index.js",
     "test": "jest --coverage"
@@ -30,7 +30,9 @@
     "@babel/preset-react": "^7.8.3",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
+    "cors": "^2.8.5",
     "css-loader": "^3.4.2",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
@@ -43,6 +45,7 @@
     "jest-cli": "^25.1.0",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
+    "nodemon": "^2.0.2",
     "puppeteer": "^2.1.1",
     "style-loader": "^1.1.3",
     "webpack": "^4.42.0",

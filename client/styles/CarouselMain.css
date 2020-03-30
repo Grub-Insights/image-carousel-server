@@ -2,8 +2,10 @@
   display: inline-block;
   overflow: auto;
   white-space: nowrap;
-  scrollbar-width: none;
-  position: absolute;
+  /* scrollbar-width: none; */
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
 }
 
 ::-webkit-scrollbar {

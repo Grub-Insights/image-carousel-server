@@ -1,14 +1,15 @@
 /* eslint-disable no-console */
 const express = require('express');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 const path = require('path');
 const Db = require('../database/index.js');
 
 const app = express();
-
-app.get('/', (req, res) => {
-  console.log('Pinged');
-});
+app.use(cors());
+// app.get('/', (req, res) => {
+//   console.log('Pinged');
+// });
 
 app.use(express.static(path.join(__dirname, '/../public')));
 
@@ -37,6 +38,6 @@ app.get('/api/carousel/:restaurantID/restaurant_name', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
+app.listen(3010, () => {
+  console.log('Server listening on port 3010');
 });

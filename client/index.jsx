@@ -2,7 +2,6 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ImageCarouselEntry from './ImageCarouselEntry.jsx'
 import ImageCarouselMain from './ImageCarouselMain.jsx';
 import ModalMain from './ModalMain.jsx';
 import styles from './styles/Index'
@@ -27,20 +26,26 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/carousel/20')
-      .then((response) => {
-        return response.json();
-      })
+    fetch('18.144.163.108:3010/api/carousel/20', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+    })
+      .then((response) => {return response.json(); })
       .then((data) => {
         this.setState({
           images: Array.from(data),
         });
       });
 
-    fetch('/api/carousel/20/restaurant_name')
-      .then((response) => {
-        return response.json();
-      })
+    fetch('18.144.163.108:3010/api/carousel/20/restaurant_name', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+    })
+      .then((response) => {return response.json(); })
       .then((data) => {
         this.setState({
           restaurantName: Array.from(data),
@@ -99,7 +104,7 @@ class App extends React.Component {
   render() {
     const { images, imageIndex, displayModal, restaurantName } = this.state;
     return (
-      <div className={styles.test}>
+      <div>
         <ImageCarouselMain showModal={this.showModal} pictures={images} imageIndex={imageIndex} />
         { images[imageIndex] && <ModalMain restaurantName={restaurantName[0].res_name} updateMianImage={this.updateMianImage} cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
       </div>
@@ -107,6 +112,7 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+// window.carousel = App
+ReactDOM.render(<App />, document.getElementById('carousel'));
 
 export default App;
