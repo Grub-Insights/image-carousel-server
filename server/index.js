@@ -4,8 +4,11 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const path = require('path');
 const Db = require('../database/index.js');
-
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false })) 
+app.use(bodyParser.json())
+
 app.use(cors());
 // app.get('/', (req, res) => {
 //   console.log('Pinged');
@@ -36,6 +39,43 @@ app.get('/api/carousel/:restaurantID/restaurant_name', (req, res) => {
       res.end(JSON.stringify(results));
     }
   });
+});
+
+//  write db recieveing function for the below CRUD opperations.
+app.post('/api/carousel', (req, res) => {
+  Db.postRestaurante(req.query.name, (err) => {
+    if (err) {
+      console.log('failed to send post data to DB');
+      res.send(400);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+app.put('/api/carousel', (req, res) => {
+  console.log('query in the put', req.query)
+  Db.updateCarousel(req.query, (err) => {
+    if (err) {
+      console.log('failure in the post CB')
+      res.send(400)
+    } else {
+      res.sendStatus(200)
+    }
+  })
+});
+
+
+app.delete('/api/carousel', (req, res) => {
+  console.log('reqbody for delete', req.body)
+  Db.deleteImage(req.body, (err) => {
+    if (err) {
+      console.log('failure to delete image')
+      res.send(400)
+    } else {
+      res.sendStatus(200);
+    }
+  })
 });
 
 app.listen(3010, () => {

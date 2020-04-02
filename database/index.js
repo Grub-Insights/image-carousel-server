@@ -1,12 +1,10 @@
 /* eslint-disable no-console */
 const mysql = require('mysql');
-require('dotenv').config();
 
 const connection = mysql.createConnection({
-  database: process.env.DATABASE,
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASS,
+  database: 'carousel',
+  host: 'localhost',
+  user: 'root',
 });
 
 const getPictures = (ID, callback) => {
@@ -31,7 +29,44 @@ const getRestaurantName = (ID, callback) => {
   });
 };
 
+const postRestaurante = (restaurantName, callback) => {
+  const queryStr = `insert into restaurants (res_name) values ("${restaurantName}")`;
+  connection.query(queryStr, (err, results) => {
+    if (err) {
+      console.log('error in getPictures: ', err);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+
+const updateCarousel = (restauranteName, callback) => {
+  console.log('rest name:', restauranteName)
+  const queryStr = `UPDATE restaurants SET (res_name) = '${restauranteName.name}' WHERE res_name = ${restauranteName.name}`;
+  connection.query(queryStr, (err, results) => {
+    if (err) {
+      console.log('error in getPictures: ', err);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+
+const deleteImage = (ID, callback) => {
+  const queryStr = `insert res_name from restaurants where restaurants.id = ${ID}`;
+  connection.query(queryStr, (err, results) => {
+    if (err) {
+      console.log('error in getPictures: ', err);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+
 module.exports = {
   getPictures,
   getRestaurantName,
+  postRestaurante,
+  updateCarousel,
+  deleteImage,
 };

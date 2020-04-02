@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('18.144.163.108:3010/api/carousel/20', {
+    fetch('http://localhost:3010/api/carousel/20', {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -39,7 +39,7 @@ class App extends React.Component {
         });
       });
 
-    fetch('18.144.163.108:3010/api/carousel/20/restaurant_name', {
+    fetch('http://localhost:3010/api/carousel/20/restaurant_name', {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'

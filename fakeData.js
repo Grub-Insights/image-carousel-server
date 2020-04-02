@@ -1,14 +1,14 @@
 /* eslint-disable no-console */
 const mysql = require('mysql');
 const faker = require('faker');
-const mysqlConfig = require('./database/config.js');
-require('dotenv').config();
+// const mysqlConfig = require('./database/config.js');
+// require('dotenv').config();
 
 const connection = mysql.createConnection({
-  database: process.env.DATABASE,
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASS,
+  database: 'carousel',
+  host: 'localhost',
+  user: 'root',
+  // password: process.env.PASS,
 });
 
 
@@ -128,7 +128,7 @@ const insertFakeData = () => {
   });
 
   const createRestaurantsTable = `CREATE TABLE restaurants (
-    id int NOT NULL ,
+    id int NOT NULL AUTO_INCREMENT,
     res_name VARCHAR(40),
     PRIMARY KEY (id)
     )`;

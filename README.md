@@ -50,3 +50,18 @@ npm install -g webpack
 npm install
 ```
 
+## API Documentation
+
+Get requests sent to /api/carousel/:restaurantID will return ~1k images
+
+Get requests sent to /api/carousel/20/restaurant_name returns ~100 restarants
+
+Post requests sent to /api/carousel/restaurants will post a new restarant to the restarant database
+  - requirements for this request are a restarant
+  - No optional parameters
+
+Put request sent to /api/carousel/restaurants will update the restarant to the entered restarante name
+  - requirements for this are a restarant name and an ID
+
+Delete request sent to /api/carousel/restaurants will remove a restarante;
+  - required parameters are the rastarant name

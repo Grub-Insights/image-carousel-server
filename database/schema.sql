@@ -5,7 +5,7 @@ CREATE DATABASE carousel;
 USE carousel;
 
 CREATE TABLE restaurants (
-    id int NOT NULL ,
+    id int NOT NULL AUTO_INCREMENT,
     res_name VARCHAR(40),
     PRIMARY KEY (id)
 );
