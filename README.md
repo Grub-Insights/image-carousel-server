@@ -52,16 +52,15 @@ npm install
 
 ## API Documentation
 
-Get requests sent to /api/carousel/:restaurantID will return ~1k images
+Get requests sent to /api/carousel/:restaurantID will return ~1k images 
 
-Get requests sent to /api/carousel/20/restaurant_name returns ~100 restarants
+Get requests sent to /api/carousel/20/restaurant_name returns ~100 restaurant
 
-Post requests sent to /api/carousel/restaurants will post a new restarant to the restarant database
-  - requirements for this request are a restarant
-  - No optional parameters
+Post requests sent to /api/carousel/restaurants will post a new restaurant to the restaurant table
+  - requirements for this request are a restaurant
 
-Put request sent to /api/carousel/restaurants will update the restarant to the entered restarante name
-  - requirements for this are a restarant name and an ID
+Put request sent to /api/carousel/restaurants will update the restaurant to the entered restaurant name
+  - requirements for this are a restaurant name and an ID
 
-Delete request sent to /api/carousel/restaurants will remove a restarante;
+Delete request sent to /api/carousel/restaurants will remove a restaurant;
   - required parameters are the rastarant name

@@ -42,8 +42,8 @@ app.get('/api/carousel/:restaurantID/restaurant_name', (req, res) => {
 });
 
 //  write db recieveing function for the below CRUD opperations.
-app.post('/api/carousel', (req, res) => {
-  Db.postRestaurante(req.query.name, (err) => {
+app.post('/api/carousel:restaurantID', (req, res) => {
+  Db.postRestaurante(req.query, (err) => {
     if (err) {
       console.log('failed to send post data to DB');
       res.send(400);
@@ -53,7 +53,7 @@ app.post('/api/carousel', (req, res) => {
   });
 });
 
-app.put('/api/carousel', (req, res) => {
+app.put('/api/carousel:restaurantID', (req, res) => {
   console.log('query in the put', req.query)
   Db.updateCarousel(req.query, (err) => {
     if (err) {
@@ -66,9 +66,9 @@ app.put('/api/carousel', (req, res) => {
 });
 
 
-app.delete('/api/carousel', (req, res) => {
+app.delete('/api/carousel:restaurantID', (req, res) => {
   console.log('reqbody for delete', req.body)
-  Db.deleteImage(req.body, (err) => {
+  Db.deleteImage(req.query, (err) => {
     if (err) {
       console.log('failure to delete image')
       res.send(400)
