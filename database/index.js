@@ -19,7 +19,8 @@ const getPictures = (ID, callback) => {
 };
 
 const getRestaurantName = (ID, callback) => {
-  const queryStr = `select res_name from restaurants where restaurants.id = ${ID.name}`;
+  console.log(ID);
+  const queryStr = `select res_name from restaurants where restaurants.id = ${ID}`;
   connection.query(queryStr, (err, results) => {
     if (err) {
       console.log('error in getPictures: ', err);
@@ -30,7 +31,7 @@ const getRestaurantName = (ID, callback) => {
 };
 
 const postRestaurante = (restaurant, callback) => {
-  const queryStr = `insert into restaurants (res_name) values ("${restaurant.name}")`;
+  const queryStr = `insert into restaurants (res_name) values ("${restaurant}")`;
   connection.query(queryStr, (err, results) => {
     if (err) {
       console.log('error in getPictures: ', err);
@@ -41,7 +42,7 @@ const postRestaurante = (restaurant, callback) => {
 }
 
 const updateCarousel = (restaurant, callback) => {
-  const queryStr = `update restaurants SET (res_name) = '${restaurant.name}' where res_name = ${restaurant.name}`;
+  const queryStr = `update restaurants SET (res_name) = '${restaurant}' where res_name = ${restaurant}`;
   connection.query(queryStr, (err, results) => {
     if (err) {
       console.log('error in getPictures: ', err);
@@ -53,7 +54,7 @@ const updateCarousel = (restaurant, callback) => {
 
 const deleteImage = (restaurant, callback) => {
   console.log('the delete input:', restaurant)
-  const queryStr = `delete from restaurants where (res_name) = ("${restaurant.name}")`;
+  const queryStr = `delete from restaurants where (res_name) = ("${restaurant}")`;
   connection.query(queryStr, (err, results) => {
     if (err) {
       console.log('error in getPictures: ', err);

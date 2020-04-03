@@ -17,8 +17,9 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '/../public')));
 
 
-app.get('/api/carousel/:restaurantID', (req, res) => {
+app.get('/api/restaurant/:restaurantID/carousel', (req, res) => {
   const restaurant = req.params.restaurantID;
+
   console.log('GET REQUEST recieved for restaurant ID of: ', restaurant);
   Db.getPictures(restaurant, (err, results) => {
     if (err) {
@@ -31,6 +32,7 @@ app.get('/api/carousel/:restaurantID', (req, res) => {
 
 app.get('/api/carousel/:restaurantID/restaurant_name', (req, res) => {
   const restaurant = req.params.restaurantID;
+
   console.log('GET REQUEST recieved for restaurant ID of: ', restaurant);
   Db.getRestaurantName(restaurant, (err, results) => {
     if (err) {
@@ -42,7 +44,7 @@ app.get('/api/carousel/:restaurantID/restaurant_name', (req, res) => {
 });
 
 //  write db recieveing function for the below CRUD opperations.
-app.post('/api/carousel:restaurantID', (req, res) => {
+app.post('/api/restaurant/:restaurantID/carousel', (req, res) => {
   Db.postRestaurante(req.query, (err) => {
     if (err) {
       console.log('failed to send post data to DB');
@@ -53,7 +55,7 @@ app.post('/api/carousel:restaurantID', (req, res) => {
   });
 });
 
-app.put('/api/carousel:restaurantID', (req, res) => {
+app.put('/api/restaurant/:restaurantID/carousel', (req, res) => {
   console.log('query in the put', req.query)
   Db.updateCarousel(req.query, (err) => {
     if (err) {
@@ -66,7 +68,7 @@ app.put('/api/carousel:restaurantID', (req, res) => {
 });
 
 
-app.delete('/api/carousel:restaurantID', (req, res) => {
+app.delete('/api/restaurant/:restaurantID/carousel', (req, res) => {
   console.log('reqbody for delete', req.body)
   Db.deleteImage(req.query, (err) => {
     if (err) {
