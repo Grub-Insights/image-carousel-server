@@ -64,11 +64,35 @@ INSERT INTO pictures(id, id_user, img_url, descript, date, restaurant_id) VALUES
 -- })
 
 -- ////////////////////////////////////// postgres layout
-id_User INTEGER REFERENCES users(user_id), id_Restaurants INTEGER REFERENCES restaurants(id)
 
-CREATE TABLE restaurants (rest_id bigserial primary key, res_name VARCHAR (100) NOT NULL);
+-- CREATE TABLE restaurants (
+--     rest_id bigserial primary key, 
+--     res_name VARCHAR (100) NOT NULL
+-- );
 
 
-CREATE TABLE users ( user_id bigserial primary key, name VARCHAR (100) NOT NULL, profile_img VARCHAR(255) NOT NULL, friend_count INTEGER default 0, review_count INTEGER default 0, helpful_count INTEGER default 0, elite_flag BOOLEAN NOT NULL);
+-- CREATE TABLE users ( 
+--     user_id bigserial primary key, 
+--     name VARCHAR (100) NOT NULL, 
+--     profile_img VARCHAR(255) NOT NULL, 
+--     friend_count INTEGER default 0, 
+--     review_count INTEGER default 0, 
+--     helpful_count INTEGER default 0, 
+--     elite_flag INTEGER default 0
+-- );
 
-CREATE TABLE pictures ( picture_id bigserial primary key, date_of VARCHAR(100), img_url VARCHAR(255) NOT NULL, descript VARCHAR(100) NOT NULL, restaurant_id int NOT NULL, id_Picture INTEGER REFERENCES users(user_id), id_Restaurants INTEGER REFERENCES restaurants(rest_id));
+-- CREATE TABLE reviews ( 
+--     review_id bigserial primary key, 
+--     title VARCHAR (10) NOT NULL, 
+--     body VARCHAR(255) NOT NULL, 
+--     helpful_count INTEGER default 0, 
+-- );
+
+-- CREATE TABLE pictures ( 
+--     picture_id bigserial primary key, 
+--     id_user INTEGER REFERENCES users(user_id), 
+--     img_url VARCHAR(255) NOT NULL, 
+--     descript VARCHAR(100) NOT NULL, 
+--     date_of VARCHAR(100), 
+--     id_restaurants INTEGER REFERENCES restaurants(rest_id)
+-- );

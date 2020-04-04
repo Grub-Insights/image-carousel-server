@@ -56,11 +56,11 @@ Get requests sent to /api/restaurant/:restaurantID/carousel' will return ~1k ima
 
 Get requests sent to /api/carousel/:restaurantID/restaurant_name returns ~100 restaurant
 
-Post requests sent to /api/restaurant/:restaurantID/carousel will post a new restaurant to the restaurant table
+Post requests sent to /api/restaurant/:restaurantID/carousel will post/add new images to a restaurant
   - requirements for this request are a restaurant
 
-Put request sent to /api/restaurant/:restaurantID/carousel will update the restaurant to the entered restaurant name
+Put request sent to /api/restaurant/:restaurantID/carousel will update the images of a restaurant to the entered restaurant name
   - requirements for this are a restaurant name and an ID
 
-Delete request sent to /api/restaurant/:restaurantID/carousel will remove a restaurant;
+Delete request sent to /api/restaurant/:restaurantID/carousel will remove a images from a restaurant;
   - required parameters are the rastarant name
