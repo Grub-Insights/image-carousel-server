@@ -4,7 +4,13 @@ const client = new Client({
   host: 'localhost',
   database: 'carousel',
 });
-client.connect();
+client.connect((err) => {
+  if (err) {
+    console.log('postgres connection error', err);
+  } else {
+    console.log('connected to postgres');
+  }
+});
 
 const getPictures = (ID, callback) => {
   const queryStr = `select * from pictures INNER JOIN users ON pictures.id_user = users.user_id where pictures.id_restaurants = ${ID};`;
