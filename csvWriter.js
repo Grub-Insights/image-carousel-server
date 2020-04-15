@@ -2,25 +2,20 @@
 const fs = require('fs');
 const csvWriter = require('csv-write-stream');
 
-var writer1 = csvWriter();
-var writer2 = csvWriter();
-var writer3 = csvWriter();
+let writer = csvWriter();
+
+let userCount = 1;
+let restaurantCount = 1;
+let pictureCount = 1;
 
 
 var faker = require('faker');
-
-let counter = 0;
-let userCounter = 0;
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-const milliDate = (min, max) => {
-  return (Math.random() * (max - min) + min).toFixed(0)
-}
-
 const foodImages = [
   'https://eclectictacoimagebucket.s3-us-west-1.amazonaws.com/anise-aroma-art-bazaar-277253.jpg',
   'https://eclectictacoimagebucket.s3-us-west-1.amazonaws.com/appetizing-bread-breakfast-close-up-357573.jpg',
@@ -57,45 +52,67 @@ const foodImages = [
   'https://eclectictacoimagebucket.s3-us-west-1.amazonaws.com/vegetable-sandwich-on-plate-1095550.jpg',
   'https://eclectictacoimagebucket.s3-us-west-1.amazonaws.com/white-and-brown-cooked-dish-on-white-ceramic-bowls-958545.jpg'];
 
+  const dataGen = () => {
+  // writer.pipe(fs.createWriteStream('./csvfiles/restaurantCsv/csv_seed0.csv'));
+  // for (let i = 0; i < 1000000; i++) {
+  //   writer.write({
+  //     id: i,
+  //     name: faker.company.companyName(),
+  //   })
+  //   // if (i % 10 === 0 && i !== 0) {
+  //   //   writer.end();
+  //   //   writer = csvWriter();
+  //   //   writer.pipe(fs.createWriteStream(`./csvfiles/restaurantCsv/csv_seed${restaurantCount}.csv`));
+  //   //   restaurantCount++
+  //   // }
+  // }
+  // writer.end();
+  // writer = csvWriter();
+  // writer.pipe(fs.createWriteStream('./csvfiles/userCsv/csv_userseed0.csv'));
+  // for (let j = 0; j < 1000000; j++) {
+  //   writer.write({
+  //     rest_id: j,
+  //     name: faker.name.firstName(),
+  //     profile_img: faker.name.lastName(),
+  //     friendCount: getRandomIntInclusive(0, 200),
+  //     reviewCount: getRandomIntInclusive(0, 255),
+  //     helpfulCount: getRandomIntInclusive(0, 50),
+  //     eliteFlag: getRandomIntInclusive(0, 1),
+  //   })
 
-const dataGen = () => {
-  writer1.pipe(fs.createWriteStream('csv_seed.csv'));
-  for (let i = 0; i < 10; i++) {
-    writer1.write({
-      id: i,
-      name: faker.company.companyName(),
-    })
-  }
-  writer1.end();
-  writer2.pipe(fs.createWriteStream('csv_userseed.csv'));
-  for (let j = 0; j < 10; j++) {
-    writer2.write({
-      rest_id: j,
-      name: faker.name.firstName(),
-      profile_img: faker.name.lastName(),
-      friendCount: getRandomIntInclusive(0, 200),
-      reviewCount: getRandomIntInclusive(0, 255),
-      helpfulCount: getRandomIntInclusive(0, 50),
-      eliteFlag: 1,
-    })
-  }
-  writer2.end();
-  writer3.pipe(fs.createWriteStream('csv_pictureseed.csv'));
-  for (let k = 0; k < 100; k++) {
-    writer3.write({
+  // //   if (j % 10 === 0 && j !== 0) {
+  // //     writer.end();
+  // //     writer = csvWriter();
+  // //     writer.pipe(fs.createWriteStream(`./csvfiles/userCsv/csv_userseed${userCount}.csv`));
+  // //     userCount++
+  // //   }
+  // }
+  // writer.end();
+  writer = csvWriter();
+  writer.pipe(fs.createWriteStream('./csvfiles/pictureCsv/csv_pictureseed1.csv'));
+  for (let k = 5000000; k < 10000000; k++) {
+    writer.write({
       picture_id: k,
-      id_user: getRandomIntInclusive(0, 9),
-      img_url: foodImages[getRandomIntInclusive(0, 32)],
-      descript: faker.random.words(4),
-      date_of: milliDate(1269148117612, Date.now()),
-      id_restaurants: getRandomIntInclusive(0, 9),
-    })
+      id_user: getRandomIntInclusive(0, 999999),
+      img_url: foodImages[getRandomIntInclusive(0, foodImages.length - 1)],
+      descript: faker.name.lastName(),
+      date_of: Date.now(),
+      id_restaurants: getRandomIntInclusive(0, 999999),
+    });
+  //   if (k % 100 === 0 && k !== 0) {
+  //     writer.end();
+  //     writer = csvWriter();
+  //     writer.pipe(fs.createWriteStream(`./csvfiles/pictureCsv/csv_pictureseed${pictureCount}.csv`));
+  //     pictureCount++
+  //   }
   }
-  writer3.end();
+  writer.end();
 
   console.log('done');
 };
 dataGen();
+
+// dataGen();
 
 // \COPY restaurants FROM '/Users/Elioso/Desktop/SDC/image-carousel-server/csv_seed.csv' DELIMITER ',' QUOTE '"' HEADER CSV;
 // \COPY users FROM '/Users/Elioso/Desktop/SDC/image-carousel-server/csv_userseed.csv' DELIMITER ',' QUOTE '"' HEADER CSV;

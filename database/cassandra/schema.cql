@@ -12,19 +12,52 @@
 -- cluster keys allow us to order the information on a node
 -- second use for cluster keys, PK needs to uniquley identify the row
 
-PRIMARY KEY ( restaurantID, pictureId )
 
--- images table
-  --  pictureId: Number, 
-  --  imageUrl: String, 
-  --  description: String,
-  --  date: String,
-  --  restaurantId: Number,
-  --  userId: Number,
-  --  name: String,
-  --  profileImg: String,
-  --  friendCount: Number,
-  --  reviewCount: Number,
-  --  helpfulCount: Number,
-  --  eliteFlag: boolean
+
+
+
+
+ CREATE KEYSPACE restaurant_pictures WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};  
+
+CREATE TABLE user (
+  user_id int,
+  user_name text,
+  profile_image_url text,
+  friend_count int,
+  review_count int,
+  elite_flag Boolean,
+  PRIMARY KEY (user_id)
+);
+
+
+CREATE TABLE restaurants (
+  restaurant_id int, 
+  restaurant_name text,
+  PRIMARY KEY (restaurant_id)
+);
+
+CREATE TABLE pictures (
+  user_id int, 
+  user_name text,
+  profile_image_url text,
+  friend_count int,
+  review_count int,
+  elite_flag Boolean,
+  picture_id int,
+  restaurant_id int,
+  description text,
+  date DATE,
+  PRIMARY KEY ((restaurant_id), picture_id)
+);
+
+
+COPY restaurants FROM '/Users/elioso/desktop/SDC/image-carousel-server/cassandraCsvFiles/restaurantcsv/csv_restSeed0.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+COPY user FROM '/Users/elioso/desktop/SDC/image-carousel-server/cassandraCsvFiles/usercsv/csv_userseed0.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+COPY pictures FROM '/Users/elioso/desktop/SDC/image-carousel-server/cassandraCsvFiles/picturecsv/csv_pictureseed0.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+
+select restaurant_name from restaurants where restaurants.id = 23453; 
+
+Insert into restaurants(restaurant_id, restaurant_name) values (1000002, 'burger joint');
+
+
 

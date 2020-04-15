@@ -1,85 +1,103 @@
 /* eslint-disable no-console */
-const express = require('express');
-const cors = require('cors')
-const bodyParser = require('body-parser');
-const path = require('path');
-const Db = require('../database/index.js');
-const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false })) 
-app.use(bodyParser.json())
+var cluster = require('cluster');
 
-app.use(cors());
-// app.get('/', (req, res) => {
-//   console.log('Pinged');
-// });
+// Code to run if we're in the master process
+if (cluster.isMaster) {
 
-app.use(express.static(path.join(__dirname, '/../public')));
+  var cpuCount = require('os').cpus().length;
+
+  // Create a worker for each CPU
+  for (var i = 0; i < cpuCount; i += 1) {
+      cluster.fork();
+  }
 
 
-app.get('/api/restaurant/:restaurantID/carousel', (req, res) => {
-  const restaurant = req.params.restaurantID;
+  // Code to run if we're in a worker process
+  } else {
+  // require('newrelic');
+  const express = require('express');
+  const cors = require('cors')
+  const bodyParser = require('body-parser');
+  const path = require('path');
+  const Db = require('../database/postgresIndex.js');
+  const app = express();
 
-  console.log('GET REQUEST recieved for restaurant ID of: ', restaurant);
-  Db.getPictures(restaurant, (err, results) => {
-    if (err) {
-      console.log('err in server CB: ', err);
-    } else {
-      res.end(JSON.stringify(results));
-    }
+
+  app.use(bodyParser.urlencoded({ extended: false })) 
+  app.use(bodyParser.json())
+
+  app.use(cors());
+  // app.get('/', (req, res) => {
+  //   console.log('Pinged');
+  // });
+
+  app.use(express.static(path.join(__dirname, '/../public')));
+
+
+  app.get('/api/restaurant/:restaurantID/carousel', (req, res) => {
+    const restaurant = req.params.restaurantID;
+    // console.log('GET REQUEST recieved for restaurant ID of: ', restaurant);
+    Db.getPictures(restaurant, (err, results) => {
+      if (err) {
+        console.log('err in server CB: ', err);
+      } else {
+        res.end(JSON.stringify(results));
+      }
+    });
   });
-});
 
-app.get('/api/carousel/:restaurantID/restaurant_name', (req, res) => {
-  const restaurant = req.params.restaurantID;
+  app.get('/api/restaurant/:restaurantID/restaurant', (req, res) => {
+    const restaurant = req.params.restaurantID;
 
-  console.log('GET REQUEST recieved for restaurant ID of: ', restaurant);
-  Db.getRestaurantName(restaurant, (err, results) => {
-    if (err) {
-      console.log('err in server CB: ', err);
-    } else {
-      res.end(JSON.stringify(results));
-    }
+    // console.log('GET REQUEST recieved for restaurant ID of: ', restaurant);
+    Db.getRestaurantName(restaurant, (err, results) => {
+      if (err) {
+        console.log('err in server CB: ', err);
+      } else {
+        res.end(JSON.stringify(results));
+      }
+    });
   });
-});
 
-//  write db recieveing function for the below CRUD opperations.
-app.post('/api/restaurant/:restaurantID/carousel', (req, res) => {
-  Db.postRestaurante(req.query, (err) => {
-    if (err) {
-      console.log('failed to send post data to DB');
-      res.send(400);
-    } else {
-      res.sendStatus(200);
-    }
+  //  write db recieveing function for the below CRUD opperations.
+  app.post('/api/restaurant/:restaurantID/carousel', (req, res) => {
+    Db.postRestaurante(req.query, (err) => {
+      if (err) {
+        console.log('failed to send post data to DB');
+        res.send(400);
+      } else {
+        res.sendStatus(200);
+      }
+    });
   });
-});
 
-app.put('/api/restaurant/:restaurantID/carousel', (req, res) => {
-  console.log('query in the put', req.query)
-  Db.updateCarousel(req.query, (err) => {
-    if (err) {
-      console.log('failure in the post CB')
-      res.send(400)
-    } else {
-      res.sendStatus(200)
-    }
-  })
-});
+  app.put('/api/restaurant/:restaurantID/carousel', (req, res) => {
+    console.log('query in the put', req.query)
+    Db.updateCarousel(req.query, (err) => {
+      if (err) {
+        console.log('failure in the post CB')
+        res.send(400)
+      } else {
+        res.sendStatus(200)
+      }
+    })
+  });
 
 
-app.delete('/api/restaurant/:restaurantID/carousel', (req, res) => {
-  console.log('reqbody for delete', req.body)
-  Db.deleteImage(req.query, (err) => {
-    if (err) {
-      console.log('failure to delete image')
-      res.send(400)
-    } else {
-      res.sendStatus(200);
-    }
-  })
-});
+  app.delete('/api/restaurant/:restaurantID/carousel', (req, res) => {
+    console.log('reqbody for delete', req.body)
+    Db.deleteImage(req.query, (err) => {
+      if (err) {
+        console.log('failure to delete image')
+        res.send(400)
+      } else {
+        res.sendStatus(200);
+      }
+    })
+  });
 
-app.listen(3010, () => {
-  console.log('Server listening on port 3010');
-});
+  app.listen(3010, () => {
+    console.log(`${cluster.worker.id} listening on port 3010`);
+  });
+};

@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3010/api/restaurant/20/carousel', {
+    fetch('http://localhost:3010/api/restaurant/30/carousel', {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -34,11 +34,12 @@ class App extends React.Component {
     })
       .then((response) => {return response.json(); })
       .then((data) => {
+        console.log('the data', data.rows);
         this.setState({
-          images: Array.from(data),
+          images: Array.from(data.rows),
         });
       });
-    fetch('http://localhost:3010/api/carousel/20/restaurant_name', {
+    fetch('http://localhost:3010/api/restaurant/30/restaurant_name', {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
