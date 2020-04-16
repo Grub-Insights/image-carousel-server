@@ -46,8 +46,7 @@ if (cluster.isMaster) {
       }
     });
   });
-
-  app.get('/api/restaurant/:restaurantID/restaurant', (req, res) => {
+  app.get('/api/restaurant/:restaurantID/restaurant_name', (req, res) => {
     const restaurant = req.params.restaurantID;
 
     // console.log('GET REQUEST recieved for restaurant ID of: ', restaurant);

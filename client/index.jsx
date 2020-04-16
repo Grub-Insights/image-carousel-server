@@ -106,7 +106,7 @@ class App extends React.Component {
     return (
       <div>
         <ImageCarouselMain showModal={this.showModal} pictures={images} imageIndex={imageIndex} />
-        { images[imageIndex] && <ModalMain restaurantName={restaurantName[0].res_name} updateMianImage={this.updateMianImage} cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
+        { images[imageIndex] && <ModalMain restaurantName={restaurantName} updateMianImage={this.updateMianImage} cyclePreviousImage={this.cyclePreviousImage} cycleNextImage={this.cycleNextImage} displayModal={displayModal} pictures={images} hide={this.hideModal} current={imageIndex} /> }
       </div>
     );
   }
