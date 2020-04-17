@@ -3,6 +3,8 @@ const { Client } = require('pg');
 const client = new Client({
   host: 'localhost',
   database: 'carousel',
+  port: 5432,
+  user: 'postgres'
 });
 client.connect((err) => {
   if (err) {

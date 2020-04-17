@@ -25,8 +25,10 @@ class App extends React.Component {
     this.updateMianImage = this.updateMianImage.bind(this);
   }
 
+  
   componentDidMount() {
-    fetch('http://localhost:3010/api/restaurant/30/carousel', {
+    const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+    fetch(`http://54.183.250.146:3010/api/restaurant/${randomInt(1, 1000000)}/carousel`, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -39,7 +41,7 @@ class App extends React.Component {
           images: Array.from(data.rows),
         });
       });
-    fetch('http://localhost:3010/api/restaurant/30/restaurant_name', {
+    fetch(`http://54.183.250.146:3010/api/restaurant/${randomInt(1, 1000000)}/restaurant_name`, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'

@@ -46,6 +46,7 @@ if (cluster.isMaster) {
       }
     });
   });
+
   app.get('/api/restaurant/:restaurantID/restaurant_name', (req, res) => {
     const restaurant = req.params.restaurantID;
 
@@ -100,3 +101,9 @@ if (cluster.isMaster) {
     console.log(`${cluster.worker.id} listening on port 3010`);
   });
 };
+
+
+
+
+// scp -i PGec2Key.pem loaderio-91e199c5262b14381ce27c0c5521e63b.txt ec2-user@ec2-54-183-250-146.us-west-1.compute.amazonaws.com:/home/ec2-user/image-carousel-server
+
