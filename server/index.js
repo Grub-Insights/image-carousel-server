@@ -31,8 +31,23 @@ if (cluster.isMaster) {
   // app.get('/', (req, res) => {
   //   console.log('Pinged');
   // });
-
   app.use(express.static(path.join(__dirname, '/../public')));
+
+  app.get('/loaderio-91e199c5262b14381ce27c0c5521e63b', (req, res) => {
+    console.log('load test');
+  });
+
+  app.get('/api/restaurant/:restaurantID/carousel', (req, res) => {
+    const restaurant = req.params.restaurantID;
+    // console.log('GET REQUEST recieved for restaurant ID of: ', restaurant);
+    Db.getPictures(restaurant, (err, results) => {
+      if (err) {
+        console.log('err in server CB: ', err);
+      } else {
+        res.end(JSON.stringify(results));
+      }
+    });
+  });
 
 
   app.get('/api/restaurant/:restaurantID/carousel', (req, res) => {
