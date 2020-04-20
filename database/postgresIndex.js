@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 const { Client } = require('pg');
 const client = new Client({
-  host: 'localhost',
+  host: '54.183.250.146',
   database: 'carousel',
   port: 5432,
-  user: 'postgres'
+  user: 'postgres',
 });
 client.connect((err) => {
   if (err) {
